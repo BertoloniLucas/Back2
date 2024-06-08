@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="1">get pizza</button>
+</body>
+<script>
+document.getElementById("1").addEventListener("click", async () => {
+    try {
+        const response = await fetch('http://localhost:3253/pizzas');
+        const pizzas = await response.json();
+        console.log(pizzas);
+    } catch (error) {
+        console.error('Error fetching pizzas:', error);
+    }
+});
+</script>
+</html>

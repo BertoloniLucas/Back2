@@ -10,10 +10,20 @@ class Pizza {
 }
 
 // despues vemos donde ponemos la pool connection
-const conn = await mysql.createPool(config)
 
 
+
+export async function getDataOnClick () {
+    const conn = await mysql.createPool(config)
+    const [rows, fields] = await conn.query('SELECT * FROM pizza')
+    conn.end()
+    console.log(rows)
+}
+    
+let btn1 = document.getElementById("1")
+btn1.addEventListener("click", getDataOnClick())
 // Almacenador de funciones para acceder mas facil luego
 class PizzaServices {
     
 }
+
